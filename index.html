@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Linux Web Server & Nginx Config Helper</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Linux Web Hosting & Nginx Configurator</h1>
+      <p>Interactive reference & virtual host generator for Ubuntu/Nginx web servers</p>
+    </header>
+
+    <div class="grid-2">
+      <!-- Config Generator -->
+      <section class="panel">
+        <h2>Generate Nginx Server Block</h2>
+        <div class="field">
+          <label for="domainInput">Domain or Hostname</label>
+          <input type="text" id="domainInput" value="myproject.local" />
+        </div>
+        <div class="field">
+          <label for="rootInput">Web Root Directory</label>
+          <input type="text" id="rootInput" value="/var/www/myproject/html" />
+        </div>
+        <div class="field">
+          <label for="portInput">Listen Port</label>
+          <input type="number" id="portInput" value="80" />
+        </div>
+        <button id="copyBtn" class="btn">Copy Nginx Config</button>
+        <span id="copyStatus" class="copy-msg"></span>
+      </section>
+
+      <!-- Live Code Output -->
+      <section class="panel dark-panel">
+        <div class="code-top">
+          <span>/etc/nginx/sites-available/site.conf</span>
+        </div>
+        <pre id="configOutput"></pre>
+      </section>
+    </div>
+
+    <!-- Linux Checklist -->
+    <section class="panel checklist-panel">
+      <h2>Essential Linux Web Server Commands</h2>
+      <div class="cmd-grid">
+        <div class="cmd-item">
+          <code>sudo apt update && sudo apt install nginx -y</code>
+          <p>Install the Nginx web server on Ubuntu/Debian.</p>
+        </div>
+        <div class="cmd-item">
+          <code>sudo nginx -t && sudo systemctl reload nginx</code>
+          <p>Test configuration syntax and reload without downtime.</p>
+        </div>
+        <div class="cmd-item">
+          <code>sudo ufw allow 'Nginx HTTP'</code>
+          <p>Permit incoming HTTP traffic on port 80 through firewall.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
